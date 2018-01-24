@@ -14,14 +14,19 @@ runSql() {
 
 mkdir -p "$H2DATA"
 
-echo
-for f in /docker-entrypoint-initdb.d/*; do
-  case "$f" in
-    *.sh)     echo "$0: running $f"; . "$f" ;;
-    *.sql)    echo "$0: running $f"; runSql "$f" ;;
-    *)        echo "$0: ignoring $f" ;;
-  esac
+if [ ! -f "$H2DATA/.initdb.completed" ]; then
+
   echo
-done
+  for f in /docker-entrypoint-initdb.d/*; do
+    case "$f" in
+      *.sh)     echo "$0: running $f"; . "$f" ;;
+      *.sql)    echo "$0: running $f"; runSql "$f" ;;
+      *)        echo "$0: ignoring $f" ;;
+    esac
+    echo
+  done
+  touch "$H2DATA/.initdb.completed"
+
+fi
 
 exec "$@"
