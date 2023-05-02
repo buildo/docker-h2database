@@ -4,13 +4,12 @@ ARG RELEASE_DATE=2022-06-13
 ARG RELEASE_VERSION=2.1.214
 
 RUN apt-get update \
-  && apt-get install curl -y \
-  && apt-get install unzip -y \
+  && apt-get install curl unzip -y \
   && curl -L https://github.com/h2database/h2database/releases/download/version-${RELEASE_VERSION}/h2-${RELEASE_DATE}.zip -o h2.zip \
   && unzip h2.zip -d . \
   && cp h2/bin/h2-${RELEASE_VERSION}.jar /h2.jar
 
-FROM eclipse-temurin:8-jre
+FROM eclipse-temurin:8u372-b07-jre-focal
 
 ENV H2DATA /h2-data
 
