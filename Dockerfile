@@ -1,7 +1,7 @@
-FROM ubuntu:20.04 AS builder
+FROM ubuntu:22.04 AS builder
 
-ARG RELEASE_DATE=2022-06-13
-ARG RELEASE_VERSION=2.1.214
+ARG RELEASE_DATE=2023-09-17
+ARG RELEASE_VERSION=2.2.224
 
 RUN apt-get update \
   && apt-get install curl unzip -y \
@@ -9,7 +9,7 @@ RUN apt-get update \
   && unzip h2.zip -d . \
   && cp h2/bin/h2-${RELEASE_VERSION}.jar /h2.jar
 
-FROM eclipse-temurin:8u372-b07-jre-focal
+FROM eclipse-temurin:21-jre-jammy
 
 ENV H2DATA /h2-data
 
