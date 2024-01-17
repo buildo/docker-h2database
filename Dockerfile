@@ -1,7 +1,7 @@
 FROM ubuntu:22.04 AS builder
 
-ARG RELEASE_DATE=2022-06-13
-ARG RELEASE_VERSION=2.1.214
+ARG RELEASE_DATE=2023-09-17
+ARG RELEASE_VERSION=2.2.224
 
 RUN apt-get update \
   && apt-get install curl unzip -y \
