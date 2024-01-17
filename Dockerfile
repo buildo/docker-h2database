@@ -1,4 +1,4 @@
-FROM ubuntu:20.04 AS builder
+FROM ubuntu:22.04 AS builder
 
 ARG RELEASE_DATE=2022-06-13
 ARG RELEASE_VERSION=2.1.214
