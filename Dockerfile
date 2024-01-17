@@ -9,7 +9,7 @@ RUN apt-get update \
   && unzip h2.zip -d . \
   && cp h2/bin/h2-${RELEASE_VERSION}.jar /h2.jar
 
-FROM eclipse-temurin:8u372-b07-jre-focal
+FROM eclipse-temurin:21-jre-jammy
 
 ENV H2DATA /h2-data
 
